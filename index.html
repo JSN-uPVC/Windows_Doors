@@ -45,7 +45,7 @@
         nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; margin-left: 25px; transition: 0.3s; }
         nav a:hover { color: #FCF6BA; }
 
-        /* ================= HERO (FULL VIEW IMAGES) ================= */
+        /* ================= HERO ================= */
         .hero { height: 75vh; position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; background: #000; }
         .slide {
             position: absolute; width: 100%; height: 100%; top:0; left:0;
@@ -69,7 +69,7 @@
         .hero-quote-box h1 { font-size: clamp(22px, 3vw, 36px); text-transform: uppercase; font-weight: 800; }
         .hero-quote-box p { font-family: 'Oswald', sans-serif; font-size: 18px; color: #FCF6BA; letter-spacing: 5px; text-transform: uppercase; }
 
-        /* ================= ABOUT & PURPOSE TILES ================= */
+        /* ================= ABOUT ================= */
         #about { padding: 80px 10%; }
         .about-main-layout { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; margin-bottom: 60px; }
         .about-img-box { flex: 1; min-width: 350px; }
@@ -83,11 +83,10 @@
         .about-tile:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,43,92,0.15); border-top-color: #00aeef; }
         .about-tile h3 { font-family: 'Oswald', sans-serif; color: #002b5c; margin-bottom: 20px; text-transform: uppercase; font-size: 24px; }
 
-        /* ================= PRODUCTS (2x2 GRID & FULL VIEW IMAGES) ================= */
+        /* ================= PRODUCTS (2x2 GRID & FIXED IMAGES) ================= */
         .products-section { padding: 80px 8%; background: #f4f7f6; }
         .section-title { font-weight: 800; text-align: center; color: #002b5c; margin-bottom: 50px; font-size: 36px; text-transform: uppercase; }
         
-        /* Updated Grid for 2 above, 2 below */
         .products-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -97,147 +96,94 @@
         }
         
         .product-card { 
-            background: #fff; cursor: pointer; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            background: #fff; cursor: pointer; transition: 0.4s ease; 
             box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; position: relative;
             display: flex; flex-direction: column; align-items: center;
         }
         .product-card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,43,92,0.15); }
         
-        /* Updated Image container to show complete image */
         .product-img-container {
-            width: 100%;
-            height: 300px;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 10px;
+            width: 100%; height: 300px; background: #fff;
+            display: flex; align-items: center; justify-content: center; padding: 10px;
         }
         .product-card img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain; 
-            transition: 0.5s ease; 
+            max-width: 100%; max-height: 100%; 
+            object-fit: contain; transition: 0.5s ease; 
         }
         .product-card:hover img { transform: scale(1.05); }
 
-        .product-header-flex {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 25px 15px 10px;
-            width: 100%;
-        }
+        .product-header-flex { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 25px 15px 10px; width: 100%; }
+        .product-info { font-weight: 700; font-family: 'Oswald', sans-serif; font-size: 20px; text-transform: uppercase; color: #002b5c; }
 
-        .product-info { 
-            font-weight: 700; 
-            font-family: 'Oswald', sans-serif; 
-            font-size: 20px; 
-            text-transform: uppercase; 
-            color: #002b5c; 
-        }
-
-        /* ANIMATED WINDOW/DOOR ICONS */
+        /* 3D ANIMATED ICONS */
         .icon-box {
-            width: 40px;
-            height: 40px;
-            border: 1.5px solid #002b5c;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1000px;
+            width: 40px; height: 40px; border: 1.5px solid #002b5c;
+            position: relative; display: flex; align-items: center; justify-content: center; perspective: 1000px;
         }
-
-        /* Sliding Animation */
         .icon-sliding::before {
-            content: "";
-            width: 50%; height: 90%;
-            border: 1.5px solid #002b5c;
-            position: absolute; right: 2px;
-            transition: transform 0.6s ease;
+            content: ""; width: 50%; height: 90%; border: 1.5px solid #002b5c;
+            position: absolute; right: 2px; transition: transform 0.6s ease;
         }
         .product-card:hover .icon-sliding::before { transform: translateX(-15px); }
 
-        /* Casement Animation (Window & Door) */
         .icon-casement .leaf {
-            width: 80%; height: 90%;
-            border: 1.5px solid #002b5c;
-            transform-origin: left;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 80%; height: 90%; border: 1.5px solid #002b5c;
+            transform-origin: left; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .product-card:hover .icon-casement .leaf { transform: rotateY(-65deg); }
 
-        /* UNIQUE uPVC BUTTON */
         .btn-upvc-explore {
-            margin: 15px 0 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 150px;
-            padding: 12px;
-            background: #00aeef;
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s ease;
+            margin: 15px 0 25px; display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 150px; padding: 12px; background: #00aeef; color: #fff;
+            text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 14px;
+            text-transform: uppercase; border: none; cursor: pointer; transition: 0.3s ease;
             clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
         }
-        .btn-upvc-explore:hover { background: #002b5c; padding-left: 20px; }
-        .btn-upvc-explore i { font-size: 11px; transition: 0.3s; }
-        .btn-upvc-explore:hover i { transform: translateX(5px); }
+        .btn-upvc-explore:hover { background: #002b5c; }
 
-        /* Mobile adjustment for grid */
+        /* ================= MOBILE VIEW POPUP FIX ================= */
+        .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:3000; padding: 20px; }
+        .modal-content { 
+            background: white; max-width: 900px; width: 95%; max-height: 90vh;
+            position: relative; border-radius: 10px; overflow-y: auto; display: flex; flex-direction: column; 
+        }
+        .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .modal-body { display: flex; flex-wrap: wrap; }
+        .modal-img-container { flex: 1; min-width: 300px; }
+        .modal-img-container img { width: 100%; height: 100%; object-fit: contain; max-height: 400px; }
+        .modal-text-container { flex: 1.2; min-width: 300px; padding: 35px; color: #444; line-height: 1.8; font-size: 16px; }
+
+        /* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) { 
             .products-grid { grid-template-columns: 1fr; }
             nav { display: none; } 
             .modal-body { flex-direction: column; }
+            .logo-text { font-size: 22px; }
+            header { height: 90px; }
+            body { padding-top: 90px; }
         }
 
         /* ================= WHY CHOOSE JSN ================= */
         .why-container { overflow: hidden; padding: 40px 0; background: #fff; }
         .why-track { display: flex; gap: 30px; animation: scrollWhy 40s linear infinite; width: max-content; }
-        .why-card { width: 300px; padding: 40px 25px; background: #f9f9f9; border-radius: 12px; text-align: center; flex-shrink: 0; transition: 0.3s; }
+        .why-card { width: 300px; padding: 40px 25px; background: #f9f9f9; border-radius: 12px; text-align: center; flex-shrink: 0; }
         .why-card i { font-size: 35px; color: #00aeef; margin-bottom: 15px; }
         .why-card h3 { font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; color: #002b5c; }
         @keyframes scrollWhy { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* ================= GET A QUOTE ================= */
+        /* ================= CONTACT ================= */
         .enquiry-bar { padding: 60px 0; text-align: center; background: #002b5c; }
         .btn-enq { 
             padding: 18px 45px; text-decoration: none; font-weight: 700; color: #fff; 
             display: inline-flex; align-items: center; gap: 12px; margin: 15px; 
-            text-transform: uppercase; border-radius: 5px; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            font-family: 'Oswald'; 
+            text-transform: uppercase; border-radius: 5px; transition: 0.3s; font-family: 'Oswald'; 
         }
-        .btn-whatsapp { background: #25D366; border: 2px solid #25D366; }
-        .btn-whatsapp:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); background: #128C7E; border-color: #128C7E; }
-        .btn-email { border: 2px solid #BF953F; color: #FCF6BA; background: transparent; }
-        .btn-email:hover { background: linear-gradient(to right, #BF953F, #B38728); color: #001a33; transform: translateY(-5px); box-shadow: 0 10px 25px rgba(191, 149, 63, 0.3); }
+        .btn-whatsapp { background: #25D366; }
+        .btn-email { border: 2px solid #BF953F; color: #FCF6BA; }
 
-        /* ================= CONTACT ================= */
         .contact-section { padding: 80px 8%; background: #001a33; color: #fff; text-align: center; }
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 50px; }
-        .contact-item i { color: #FCF6BA; font-size: 32px; margin-bottom: 15px; }
         footer { background: #000; padding: 30px; color: #555; text-align: center; text-transform: uppercase; }
-
-        /* ================= MODAL ================= */
-        .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:3000; padding: 20px; }
-        .modal-content { background: white; max-width: 900px; width: 100%; position: relative; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
-        .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .modal-body { display: flex; flex-wrap: wrap; }
-        .modal-img-container { flex: 1; min-width: 300px; }
-        .modal-img-container img { width: 100%; height: 100%; object-fit: cover; max-height: 400px; }
-        .modal-text-container { flex: 1.2; min-width: 300px; padding: 35px; color: #444; line-height: 1.8; font-size: 16px; }
     </style>
 </head>
 <body>
@@ -359,7 +305,7 @@
         </div>
     </section>
 
-    <footer>&copy; 2025 JSN Windows & Doors | Precision Architectural Solutions</footer>
+    <footer>&copy; 2025 JSN Windows & Doors | Precision in every fabrication</footer>
 
     <div id="productModal" class="modal">
         <div class="modal-content">
@@ -388,6 +334,5 @@
         }
         window.onclick = function(e) { if (e.target.id == 'productModal') closeModal(); }
     </script>
-
 </body>
 </html>
