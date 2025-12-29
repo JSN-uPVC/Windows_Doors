@@ -13,7 +13,6 @@
         html { scroll-behavior: smooth; }
         body { background: #fff; padding-top: 110px; color: #333; overflow-x: hidden; }
 
-        /* PRECISION SCROLLING OFFSET FOR HEADER */
         section { scroll-margin-top: 110px; }
 
         /* ================= HEADER ================= */
@@ -53,7 +52,6 @@
             opacity: 0; animation: fade 25s infinite;
         }
         .slide::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); }
-
         .slide:nth-child(1) { background-image: url("upvc12.jpg"); opacity: 1; }
         .slide:nth-child(2) { background-image: url("upvc5.webp"); animation-delay: 5s; }
         .slide:nth-child(3) { background-image: url("upvc8.jpg"); animation-delay: 10s; }
@@ -74,86 +72,50 @@
         .about-main-layout { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; margin-bottom: 60px; }
         .about-img-box { flex: 1; min-width: 350px; }
         .about-img-box img { width: 100%; border-radius: 8px; box-shadow: 20px 20px 0px #00aeef; }
-        
         .tiles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .about-tile { 
-            background: #ffffff; padding: 45px; border-top: 5px solid #002b5c; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s ease; border-radius: 0 0 10px 10px;
-        }
-        .about-tile:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,43,92,0.15); border-top-color: #00aeef; }
+        .about-tile { background: #ffffff; padding: 45px; border-top: 5px solid #002b5c; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s ease; border-radius: 0 0 10px 10px; }
         .about-tile h3 { font-family: 'Oswald', sans-serif; color: #002b5c; margin-bottom: 20px; text-transform: uppercase; font-size: 24px; }
 
-        /* ================= PRODUCTS (2x2 GRID & FIXED IMAGES) ================= */
+        /* ================= PRODUCTS ================= */
         .products-section { padding: 80px 8%; background: #f4f7f6; }
         .section-title { font-weight: 800; text-align: center; color: #002b5c; margin-bottom: 50px; font-size: 36px; text-transform: uppercase; }
-        
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 40px; 
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        .product-card { 
-            background: #fff; cursor: pointer; transition: 0.4s ease; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; position: relative;
-            display: flex; flex-direction: column; align-items: center;
-        }
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .product-card { background: #fff; cursor: pointer; transition: 0.4s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; position: relative; display: flex; flex-direction: column; align-items: center; }
         .product-card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,43,92,0.15); }
-        
-        .product-img-container {
-            width: 100%; height: 300px; background: #fff;
-            display: flex; align-items: center; justify-content: center; padding: 10px;
-        }
-        .product-card img { 
-            max-width: 100%; max-height: 100%; 
-            object-fit: contain; transition: 0.5s ease; 
-        }
-        .product-card:hover img { transform: scale(1.05); }
-
+        .product-img-container { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; padding: 10px; background: #fff; }
+        .product-card img { max-width: 100%; max-height: 100%; object-fit: contain; transition: 0.5s ease; }
         .product-header-flex { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 25px 15px 10px; width: 100%; }
         .product-info { font-weight: 700; font-family: 'Oswald', sans-serif; font-size: 20px; text-transform: uppercase; color: #002b5c; }
 
-        /* 3D ANIMATED ICONS */
-        .icon-box {
-            width: 40px; height: 40px; border: 1.5px solid #002b5c;
-            position: relative; display: flex; align-items: center; justify-content: center; perspective: 1000px;
-        }
-        .icon-sliding::before {
-            content: ""; width: 50%; height: 90%; border: 1.5px solid #002b5c;
-            position: absolute; right: 2px; transition: transform 0.6s ease;
-        }
-        .product-card:hover .icon-sliding::before { transform: translateX(-15px); }
+        /* CONTINUOUS 3D ICONS - REMOVED HOVER OVERRIDE */
+        .icon-box { border: 1.5px solid #002b5c; position: relative; display: flex; align-items: center; justify-content: center; perspective: 1000px; }
+        .icon-window { width: 35px; height: 35px; }
+        .icon-door { width: 35px; height: 55px; }
 
-        .icon-casement .leaf {
-            width: 80%; height: 90%; border: 1.5px solid #002b5c;
-            transform-origin: left; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        .icon-sliding::before { 
+            content: ""; width: 50%; height: 90%; border: 1.5px solid #002b5c; position: absolute; right: 2px; 
+            animation: autoSlide 3s infinite ease-in-out; 
         }
-        .product-card:hover .icon-casement .leaf { transform: rotateY(-65deg); }
+        @keyframes autoSlide { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-15px); } }
 
-        .btn-upvc-explore {
-            margin: 15px 0 25px; display: flex; align-items: center; justify-content: center; gap: 10px;
-            width: 150px; padding: 12px; background: #00aeef; color: #fff;
-            text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 14px;
-            text-transform: uppercase; border: none; cursor: pointer; transition: 0.3s ease;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        .icon-casement .leaf { 
+            width: 80%; height: 90%; border: 1.5px solid #002b5c; transform-origin: left; 
+            animation: autoSwing 3s infinite ease-in-out; 
         }
+        @keyframes autoSwing { 0%, 100% { transform: rotateY(0deg); } 50% { transform: rotateY(-65deg); } }
+
+        .btn-upvc-explore { margin: 15px 0 25px; display: flex; align-items: center; justify-content: center; gap: 10px; width: 150px; padding: 12px; background: #00aeef; color: #fff; text-decoration: none; font-family: 'Oswald'; font-size: 14px; text-transform: uppercase; border: none; cursor: pointer; transition: 0.3s; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); }
         .btn-upvc-explore:hover { background: #002b5c; }
 
         /* ================= MOBILE VIEW POPUP FIX ================= */
         .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:3000; padding: 20px; }
-        .modal-content { 
-            background: white; max-width: 900px; width: 95%; max-height: 90vh;
-            position: relative; border-radius: 10px; overflow-y: auto; display: flex; flex-direction: column; 
-        }
+        .modal-content { background: white; max-width: 900px; width: 95%; max-height: 90vh; position: relative; border-radius: 10px; overflow-y: auto; display: flex; flex-direction: column; }
         .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .modal-body { display: flex; flex-wrap: wrap; }
         .modal-img-container { flex: 1; min-width: 300px; }
         .modal-img-container img { width: 100%; height: 100%; object-fit: contain; max-height: 400px; }
         .modal-text-container { flex: 1.2; min-width: 300px; padding: 35px; color: #444; line-height: 1.8; font-size: 16px; }
 
-        /* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) { 
             .products-grid { grid-template-columns: 1fr; }
             nav { display: none; } 
@@ -163,7 +125,7 @@
             body { padding-top: 90px; }
         }
 
-        /* ================= WHY CHOOSE JSN ================= */
+        /* ================= WHY & CONTACT ================= */
         .why-container { overflow: hidden; padding: 40px 0; background: #fff; }
         .why-track { display: flex; gap: 30px; animation: scrollWhy 40s linear infinite; width: max-content; }
         .why-card { width: 300px; padding: 40px 25px; background: #f9f9f9; border-radius: 12px; text-align: center; flex-shrink: 0; }
@@ -171,15 +133,15 @@
         .why-card h3 { font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; color: #002b5c; }
         @keyframes scrollWhy { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* ================= CONTACT ================= */
+        /* ================= GLOWING GET A QUOTE BUTTONS ================= */
         .enquiry-bar { padding: 60px 0; text-align: center; background: #002b5c; }
-        .btn-enq { 
-            padding: 18px 45px; text-decoration: none; font-weight: 700; color: #fff; 
-            display: inline-flex; align-items: center; gap: 12px; margin: 15px; 
-            text-transform: uppercase; border-radius: 5px; transition: 0.3s; font-family: 'Oswald'; 
-        }
-        .btn-whatsapp { background: #25D366; }
-        .btn-email { border: 2px solid #BF953F; color: #FCF6BA; }
+        .btn-enq { padding: 18px 45px; text-decoration: none; font-weight: 700; color: #fff; display: inline-flex; align-items: center; gap: 12px; margin: 15px; text-transform: uppercase; border-radius: 5px; transition: 0.3s; font-family: 'Oswald'; }
+        
+        @keyframes glowWhatsApp { 0%, 100% { box-shadow: 0 0 5px #25D366; } 50% { box-shadow: 0 0 20px #25D366; } }
+        @keyframes glowEmail { 0%, 100% { box-shadow: 0 0 5px #BF953F; } 50% { box-shadow: 0 0 20px #BF953F; } }
+
+        .btn-whatsapp { background: #25D366; animation: glowWhatsApp 2s infinite ease-in-out; }
+        .btn-email { border: 2px solid #BF953F; color: #FCF6BA; animation: glowEmail 2.5s infinite ease-in-out; }
 
         .contact-section { padding: 80px 8%; background: #001a33; color: #fff; text-align: center; }
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 50px; }
@@ -238,7 +200,7 @@
             <div class="product-card" onclick="openModal('Sliding Windows', 'slidingwindow.webp', 'Our sliding windows feature a space-saving design with smooth-gliding tracks, making them perfect for modern homes with limited space. Engineered system provide enhanced security without compromising on expansive views. The high-quality weather seals ensure a dust-free and noise-insulated environment for your interiors.')">
                 <div class="product-img-container"><img src="slidingwindow.webp" alt="Sliding Window"></div>
                 <div class="product-header-flex">
-                    <div class="icon-box icon-sliding"></div>
+                    <div class="icon-box icon-window icon-sliding"></div>
                     <div class="product-info">Sliding Windows</div>
                 </div>
                 <button class="btn-upvc-explore">Explore <i class="fas fa-chevron-right"></i></button>
@@ -247,7 +209,7 @@
             <div class="product-card" onclick="openModal('Casement Windows', 'casmentwindow.jpg', 'Designed for maximum ventilation, our casement windows open fully to invite fresh air and natural light into your living space. They feature reinforced frames and high-performance gaskets that provide an airtight seal against heavy rain and wind. The classic side-hinged mechanism offers a timeless aesthetic that complements both traditional and contemporary architecture.')">
                 <div class="product-img-container"><img src="casmentwindow.jpg" alt="Casement Window"></div>
                 <div class="product-header-flex">
-                    <div class="icon-box icon-casement"><div class="leaf"></div></div>
+                    <div class="icon-box icon-window icon-casement"><div class="leaf"></div></div>
                     <div class="product-info">Casement Windows</div>
                 </div>
                 <button class="btn-upvc-explore">Explore <i class="fas fa-chevron-right"></i></button>
@@ -256,7 +218,7 @@
             <div class="product-card" onclick="openModal('Sliding Doors', 'slidingdoor.jpg', 'JSN sliding doors create a seamless transition between your indoor and outdoor spaces with large glass panels . The heavy-duty rollers ensure effortless operation, even for oversized panels, providing a grand and elegant entrance. Built with UV-resistant uPVC, these doors offer long-lasting beauty and superior thermal efficiency.')">
                 <div class="product-img-container"><img src="slidingdoor.jpg" alt="Sliding Door"></div>
                 <div class="product-header-flex">
-                    <div class="icon-box icon-sliding"></div>
+                    <div class="icon-box icon-door icon-sliding"></div>
                     <div class="product-info">Sliding Doors</div>
                 </div>
                 <button class="btn-upvc-explore">Explore <i class="fas fa-chevron-right"></i></button>
@@ -265,7 +227,7 @@
             <div class="product-card" onclick="openModal('Casement Doors', 'casmentdoor2.webp', 'Our casement doors offer a robust and secure solution for your balcony access, featuring a wide opening for easy movement. The multi-chambered profile design acts as a thermal barrier with a variety of premium finishes and high-security hardware, they combine safety with a sophisticated high-end look.')">
                 <div class="product-img-container"><img src="casmentdoor2.webp" alt="Casement Door"></div>
                 <div class="product-header-flex">
-                    <div class="icon-box icon-casement"><div class="leaf"></div></div>
+                    <div class="icon-box icon-door icon-casement"><div class="leaf"></div></div>
                     <div class="product-info">Casement Doors</div>
                 </div>
                 <button class="btn-upvc-explore">Explore <i class="fas fa-chevron-right"></i></button>
@@ -305,7 +267,7 @@
         </div>
     </section>
 
-    <footer>&copy; 2025 JSN Windows & Doors | Precision in every fabrication</footer>
+    <footer>&copy; 2025 JSN Windows & Doors | Precision Architectural Solutions</footer>
 
     <div id="productModal" class="modal">
         <div class="modal-content">
